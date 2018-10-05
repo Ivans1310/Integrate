@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Publicado por:</strong>
+  <%= @problematic.user.email %>
+</p>
+
+<p>
+  <strong>Nombre pr:</strong>
+  <%= @problematic.nombre_pr %>
+</p>
+
+<p>
+  <strong>Descripcion pr:</strong>
+  <%= @problematic.descripcion_pr %>
+</p>
+
+<p>
+  <strong>Te perjudica:</strong>
+  <%= @problematic.te_perjudica %>
+</p>
+
+<%= link_to 'Edit', edit_problematic_path(@problematic) %> |
+<%= link_to 'Back', problematics_path %>

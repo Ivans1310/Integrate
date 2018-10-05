@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Problematics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre pr</th>
+      <th>Descripcion pr</th>
+      <th>Te perjudica</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @problematics.each do |problematic| %>
+      <tr>
+        <td><%= problematic.nombre_pr %></td>
+        <td><%= problematic.descripcion_pr %></td>
+        <td><%= problematic.te_perjudica %></td>
+        <td><%= link_to 'Show', problematic %></td>
+        <td><%= link_to 'Edit', edit_problematic_path(problematic) %></td>
+        <td><%= link_to 'Destroy', problematic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Problematic', new_problematic_path %>

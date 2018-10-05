@@ -1,0 +1,32 @@
+<%= form_with(model: problematic, local: true) do |form| %>
+  <% if problematic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(problematic.errors.count, "error") %> prohibited this problematic from being saved:</h2>
+
+      <ul>
+      <% problematic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre_pr %>
+    <%= form.text_field :nombre_pr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion_pr %>
+    <%= form.text_area :descripcion_pr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :te_perjudica %>
+    <%= form.check_box :te_perjudica %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
