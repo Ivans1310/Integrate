@@ -2,12 +2,16 @@
 En los campos se puso la clase de bootstrap form-control, de la forma como lo admite por ejemplo f.password_field
 al igual que el estilo del boton en el f.submit, estos osn metodos
 -->
-<div class="mx-auto my-auto" style="width: 200px; height: 300px;">
+<div class="mx-auto mt-5" style="width: 600px; height: 300px;">
 <h2>Crea cuenta</h2>
 <div class="form-group">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
+    <div class="field">
+      <%= f.label :nombre_us %><br />
+      <%= f.text_field :nombre_us, autofocus: true, autocomplete: "nombre_us", class:"form-control" %>
+    </div>
 
 
     <div class="field">

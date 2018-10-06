@@ -50,3 +50,6 @@ rails g migration add_location_id_to_users location:references
 -->
 Preguntas
 // de donde sale el passwod en la vista registro?
+//@problematic = current_user.problematic.new(problematic_params)
+// funcionamiento de esto :
+// porque en unas vistas es form.text_field :location_id y en otras es f.text_field :location_id

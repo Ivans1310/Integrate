@@ -4,6 +4,8 @@ class CreateProblematics < ActiveRecord::Migration[5.2]
       t.string :nombre_pr
       t.text :descripcion_pr
       t.boolean :te_perjudica
+      t.text :descripcion_prueba
+
 
       t.timestamps
     end

@@ -24,6 +24,7 @@ class ProblematicsController < ApplicationController
   # POST /problematics
   # POST /problematics.json
   def create
+
     @problematic = current_user.problematic.new(problematic_params)
 
     respond_to do |format|

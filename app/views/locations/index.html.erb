@@ -1,12 +1,14 @@
+<div class="mx-auto" style="width: 500px;">
+
 <p id="notice"><%= notice %></p>
 
-<h1>Locations</h1>
+<h1>Localidades</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Num loc</th>
-      <th>Nombre loc</th>
+      <th>Localidad numero</th>
+      <th>Nombre de localidad</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,7 +18,7 @@
       <tr>
         <td><%= location.num_loc %></td>
         <td><%= location.nombre_loc %></td>
-        <td><%= link_to 'Show', location %></td>
+        <td><%= link_to 'Seleciona', location %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
         <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -27,3 +29,5 @@
 <br>
 
 <%= link_to 'New Location', new_location_path %>
+
+</div>
