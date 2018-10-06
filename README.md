@@ -37,3 +37,16 @@ rails g devise User
 
 // para referenciar un modelo a otro en este caso referenciar problematics a users
 rails g migration add_user_id_to_problematics user:references
+rails g migration add_location_id_to_users location:references
+
+// Para agregar una nueva columna en un modelo
+
+<!--
+<div class="field">
+  <%= #f.label :location %><br />
+  <%= #f.location_field :location, autofocus: true, autocomplete: "location", class:"form-control" %>
+</div>
+
+-->
+Preguntas
+// de donde sale el passwod en la vista registro?

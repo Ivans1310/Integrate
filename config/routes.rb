@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :thematics
+  resources :locations
   resources :problematics
   devise_for :users
   # resources :articles , except: [:delete] o , only: [:create] // en este cas este comando genera todas las rutas para CRUD del modelo Articles

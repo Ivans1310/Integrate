@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_loc: 1
+  nombre_loc: MyString
+
+two:
+  num_loc: 1
+  nombre_loc: MyString

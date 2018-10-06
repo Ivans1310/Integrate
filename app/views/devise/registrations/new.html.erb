@@ -8,10 +8,17 @@ al igual que el estilo del boton en el f.submit, estos osn metodos
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
+
+
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
     </div>
+    <div class="field">
+      <%= f.label :location_id%><br />
+      <%= f.text_field :location_id, autofocus: true, autocomplete: "location_id", class:"form-control" %>
+    </div>
+
 
     <div class="field">
       <%= f.label :password %>
