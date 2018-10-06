@@ -53,3 +53,4 @@ Preguntas
 //@problematic = current_user.problematic.new(problematic_params)
 // funcionamiento de esto :
 // porque en unas vistas es form.text_field :location_id y en otras es f.text_field :location_id
+//https://hidden-eyrie-17738.herokuapp.com/ | https://git.heroku.com/hidden-eyrie-17738.git

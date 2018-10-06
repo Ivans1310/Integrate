@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_015820) do
+ActiveRecord::Schema.define(version: 2018_10_06_015900) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "locations", force: :cascade do |t|
     t.integer "num_loc"
@@ -26,12 +29,12 @@ ActiveRecord::Schema.define(version: 2018_10_06_015820) do
     t.text "descripcion_prueba"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_problematics_on_user_id"
   end
 
   create_table "thematics", force: :cascade do |t|
-    t.integer "location_id"
+    t.bigint "location_id"
     t.string "nombre_te"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_015820) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "location_id"
+    t.bigint "location_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -56,4 +59,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_015820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "problematics", "users"
+  add_foreign_key "thematics", "locations"
+  add_foreign_key "users", "locations"
 end
