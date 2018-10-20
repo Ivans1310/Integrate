@@ -2,7 +2,7 @@
 
 <p>
   <strong>Publicado por:</strong>
-  <%= @problematic.user.email %>
+  <%= @problematic.usuario %>
 </p>
 
 <p>
@@ -19,6 +19,9 @@
   <strong>Te perjudica:</strong>
   <%= @problematic.te_perjudica %>
 </p>
+
+
+
 
 <%= link_to 'Edit', edit_problematic_path(@problematic) %> |
 <%= link_to 'Back', problematics_path %>

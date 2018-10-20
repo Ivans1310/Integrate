@@ -1,3 +1,6 @@
 class Problematic < ApplicationRecord
-  belongs_to :user
+  validates :nombre_pr,  presence: true
+  
+  belongs_to :thematic
+
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: thematic, local: true) do |form| %>
+<%= form_with(model: location_thematic_path(current_user.location_id), local: true) do |form| %>
   <% if thematic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(thematic.errors.count, "error") %> prohibited this thematic from being saved:</h2>

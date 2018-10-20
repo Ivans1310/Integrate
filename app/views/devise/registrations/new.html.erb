@@ -20,7 +20,8 @@ al igual que el estilo del boton en el f.submit, estos osn metodos
     </div>
     <div class="field">
       <%= f.label :location_id%><br />
-      <%= f.text_field :location_id, autofocus: true, autocomplete: "location_id", class:"form-control" %>
+
+      <%= f.select(:location_id, options_for_select([['Usaquen',1], ['Chapinero', 2], ['---', 3]], 3)) %>
     </div>
 
 

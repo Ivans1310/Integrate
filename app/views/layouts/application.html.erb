@@ -26,9 +26,12 @@
           <li class="nav-item">
             <a class="nav-link" href="#experence"><h4>Cuidadanos</h4></a>
           </li>
+          <% if user_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link" href="#education"><h4>Localidad</h3></a>
+            <a class="nav-link" href="#education"><h4><%= link_to 'Thematicas', {:controller => "thematics", :action => "index", :location_id => current_user.location_id }  %> </h3></a>
           </li>
+          <% end %>
+
           <li class="nav-item">
             <a class="nav-link" href="#skills"><h4>Equipos</h3></a>
           </li>

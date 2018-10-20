@@ -1,14 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @thematic.location %>
-</p>
+<div class="text-center m-5">
+  <p>
+    <strong>Location:</strong>
+    <%= session[:location_id]%>
+  </p>
 
-<p>
-  <strong>Nombre te:</strong>
-  <%= @thematic.nombre_te %>
-</p>
+  <h1>
+    <strong><%= @thematic.first.nombre_te %></strong>
 
-<%= link_to 'Edit', edit_thematic_path(@thematic) %> |
-<%= link_to 'Back', thematics_path %>
+  </h1>
+  <div class="m-5">
+    <p>
+      <strong> Noticias</strong>
+    </p>
+
+  </div>
+  <div class="m-5">
+    <p>
+      <strong> Problematicas</strong>
+    </p>
+    <%= link_to 'Entrar', problematics_path  %>
+
+
+  </div>
+  <div class="m-5">
+    <p>
+      <strong> Encuestas</strong>
+    </p>
+
+
+  </div>
+  <div class="m-5">
+    <p>
+      <strong> Proyectos ejecutados</strong>
+    </p>
+
+
+  </div>
+  <div class="m-5">
+    <p>
+      <strong> Seguimiento</strong>
+    </p>
+
+
+  </div>
+
+
+</div>

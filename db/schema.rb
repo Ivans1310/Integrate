@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_015900) do
+ActiveRecord::Schema.define(version: 2018_10_09_182836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 2018_10_06_015900) do
     t.text "descripcion_pr"
     t.boolean "te_perjudica"
     t.text "descripcion_prueba"
+    t.text "usuario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_problematics_on_user_id"
+    t.bigint "thematic_id"
+    t.index ["thematic_id"], name: "index_problematics_on_thematic_id"
   end
 
   create_table "thematics", force: :cascade do |t|
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_015900) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "problematics", "users"
+  add_foreign_key "problematics", "thematics"
   add_foreign_key "thematics", "locations"
   add_foreign_key "users", "locations"
 end

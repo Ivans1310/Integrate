@@ -3,28 +3,33 @@
 
 <h1>Thematics</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Nombre te</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row m-5">
+  <div class="col-lg-6 text-center">
+    <%= @thematics.first.nombre_te %>
+    <%= link_to 'Entrar',  thematic_path(@thematics.first)%>
 
-  <tbody>
-    <% @thematics.each do |thematic| %>
-      <tr>
-        <td><%= thematic.location_id %></td>
-        <td><%= thematic.nombre_te %></td>
-        <td><%= link_to 'Show', thematic %></td>
-        <td><%= link_to 'Edit', edit_thematic_path(thematic) %></td>
-        <td><%= link_to 'Destroy', thematic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+  </div>
+  <div class="col-lg-6 text-center">
+    <%= @thematics.second.nombre_te %>
+    <%= link_to 'Entrar',  thematic_path(@thematics.second)%>
+
+  </div>
+</div>
+<div class="row m-5">
+  <div class="col-lg-6 text-center">
+    <%= @thematics.third.nombre_te %>
+    <%= link_to 'Entrar',  thematic_path(@thematics.third)%>
+
+
+  </div>
+  <div class="col-lg-6 text-center">
+    <%= @thematics.fourth.nombre_te %>
+    <%= link_to 'Entrar',  thematic_path(@thematics.fourth)%>
+
+  </div>
+</div>
+
+
 
 <br>
-
-<%= link_to 'New Thematic', new_thematic_path %>

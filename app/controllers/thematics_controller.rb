@@ -1,15 +1,32 @@
 class ThematicsController < ApplicationController
-  before_action :set_thematic, only: [:show, :edit, :update, :destroy]
+  #before_action :set_thematic, only: [:show, :edit, :update, :destroy]
 
   # GET /thematics
   # GET /thematics.json
   def index
-    @thematics = Thematic.all
+    session[:location_id] = params[:location_id]
+
+
+
+    @thematics = Thematic.where("location_id = ? ", session[:location_id])
+    #@thematics = Thematic.all
+    #@thematics = Thematic.where("location_id = ? ",params[:location_id])
+
+    # @thematics = Thematic.find(params[:location_id])
+
+
   end
 
   # GET /thematics/1
   # GET /thematics/1.json
   def show
+    session[:thematic_id] = params[:id]
+
+    @thematic = Thematic.where("id = ? AND location_id = ?" , session[:thematic_id], session[:location_id])
+
+    #@thematic = @location.thematic.find(params[:id])
+
+
   end
 
   # GET /thematics/new
@@ -63,9 +80,12 @@ class ThematicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_thematic
-      @thematic = Thematic.find(params[:id])
-    end
+    #def set_thematic
+    #  @thematic = Thematic.find(params[:id])
+    #end
+
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thematic_params

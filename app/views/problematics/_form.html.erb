@@ -24,7 +24,10 @@
   <div class="field">
     <%= form.label :te_perjudica %>
     <%= form.check_box :te_perjudica %>
+
   </div>
+
+    <%= form.hidden_field :usuario, :value => current_user.nombre_us %>
 
   <div class="actions">
     <%= form.submit %>

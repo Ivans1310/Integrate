@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :thematics
   resources :locations
+  resources :thematics
   resources :problematics
+  
+
+
   # resources :articles , except: [:delete] o , only: [:create] // en este cas este comando genera todas las rutas para CRUD del modelo Articles
   #Y es este caso se epecifica que se crearan todas las rutas excepto la de borrar
 

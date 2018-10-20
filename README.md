@@ -39,13 +39,11 @@ rails g devise User
 rails g migration add_user_id_to_problematics user:references
 rails g migration add_location_id_to_users location:references
 
-// Para agregar una nueva columna en un modelo
+// para renderizar la vista a  al metodo new
+render :new
 
 <!--
-<div class="field">
-  <%= #f.label :location %><br />
-  <%= #f.location_field :location, autofocus: true, autocomplete: "location", class:"form-control" %>
-</div>
+
 
 -->
 Preguntas
@@ -54,3 +52,44 @@ Preguntas
 // funcionamiento de esto :
 // porque en unas vistas es form.text_field :location_id y en otras es f.text_field :location_id
 //https://hidden-eyrie-17738.herokuapp.com/ | https://git.heroku.com/hidden-eyrie-17738.git
+
+Mas pregutnas
+// porque fue necesario hacer una migracion aparte, y no fue posible al modificar el archivo de migracion del modelo problematic
+
+// porq las variables de clase que son privadas si se pueden ver en la clase, su funcionamiento
+
+// como recupero una tabla que borre en el postgre
+// que diferencia hay entre params[:id] y params[:articulo_id]
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Thematics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Nombre te</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+//    <% @thematics.each do |thematic| %>
+      <tr>
+        <td><%= thematic.location_id %></td>
+        <td><%= thematic.nombre_te %></td>
+        <td><%= link_to 'Show', thematic %></td>
+        <td><%= link_to 'Edit', edit_thematic_path(thematic) %></td>
+        <td><%= link_to 'Destroy', thematic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thematic', new_thematic_path %>

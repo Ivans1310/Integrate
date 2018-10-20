@@ -1,10 +1,22 @@
 class ProblematicsController < ApplicationController
-  before_action :set_problematic, only: [:show, :edit, :update, :destroy]
+  before_action :set_problematic, only: [ :show, :edit, :update, :destroy]
+
 
   # GET /problematics
   # GET /problematics.json
   def index
-    @problematics = Problematic.all
+
+    @problematics=Problematic.joins(thematic: :location).where("thematic_id = ? AND thematics.location_id = ?" , session[:thematic_id], session[:location_id])
+
+    #@thematic = @location.thematic.find(params[:thematic_id])
+    #@thematic = Thematic.find(params[:thematic_id])
+
+    #@problematics = @thematic.problematic.where("location_id = ?" , params[:location_id])
+    #@problematics = Problematic.where("thematic_id = ? AND location_id = ?" , params[:thematic][:id], params[:location_id])
+
+    #@locations = Location.find(params[:location_id])
+    #@thematics = @locations.thematic.find(params[:thematic_id])
+    #@problematics = @thematics.problematic
   end
 
   # GET /problematics/1
@@ -14,6 +26,7 @@ class ProblematicsController < ApplicationController
 
   # GET /problematics/new
   def new
+
     @problematic = Problematic.new
   end
 
@@ -25,7 +38,8 @@ class ProblematicsController < ApplicationController
   # POST /problematics.json
   def create
 
-    @problematic = current_user.problematic.new(problematic_params)
+    @thematic = Thematic.find(session[:thematic_id])
+    @problematic = @thematic.problematic.new(problematic_params)
 
     respond_to do |format|
       if @problematic.save
@@ -64,12 +78,15 @@ class ProblematicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+
     def set_problematic
       @problematic = Problematic.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problematic_params
-      params.require(:problematic).permit(:nombre_pr, :descripcion_pr, :te_perjudica)
+
+      params.require(:problematic).permit(:nombre_pr, :descripcion_pr, :te_perjudica, :usuario)
     end
 end
