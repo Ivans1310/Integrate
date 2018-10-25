@@ -1,35 +1,42 @@
-<%= form_with(model: problematic, local: true) do |form| %>
-  <% if problematic.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(problematic.errors.count, "error") %> prohibited this problematic from being saved:</h2>
+<div class="form-group mx-auto" >
+  <%= form_with(model: problematic, local: true) do |form| %>
+    <% if problematic.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(problematic.errors.count, "error") %> prohibited this problematic from being saved:</h2>
 
-      <ul>
-      <% problematic.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% problematic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field align-baseline">
+      <%= form.label :nombre_de_problematica %>
+      <p class="">Asigna un nombre que identifique la nueva problematica</p>
+      <%= form.text_field :nombre_pr ,autofocus: true, class:"form-control"%>
+    </div>
+
+    <div class="field">
+      <%= form.label :descripcion_de_problematica %>
+      <p>Entre mas detalles de la problematica que propones tendra una mejor acogida,
+        No escatimes en detalles, especifica ubicacion, a quien afecta y hasta una posible solucion. </p>
+      <%= form.text_area :descripcion_pr,autofocus: true, class:"form-control",rows:"10" %>
+    </div>
+
+    <div class="field text-center">
+      <%= form.label :carga_imagen %>
+      <p>Carga una imagen para dar mayor detalle de la problematica propuesta</p>
+      <%= form.file_field :image, class:"form-control align-middle" %>
+
+    </div>
+
+      <%= form.hidden_field :usuario, :value => current_user.nombre_us %>
+
+    <div class="actions my-3 ">
+      <%= form.submit "Crea la nueva problematica", class:"btn btn-warning " %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nombre_pr %>
-    <%= form.text_field :nombre_pr %>
-  </div>
-
-  <div class="field">
-    <%= form.label :descripcion_pr %>
-    <%= form.text_area :descripcion_pr %>
-  </div>
-
-  <div class="field">
-    <%= form.label :te_perjudica %>
-    <%= form.check_box :te_perjudica %>
-
-  </div>
-
-    <%= form.hidden_field :usuario, :value => current_user.nombre_us %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

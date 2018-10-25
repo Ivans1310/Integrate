@@ -10,6 +10,226 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- 
+
  */
 @import "bootstrap";
+@import "font-awesome";
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import "https://fonts.googleapis.com/css?family=Black+Han+Sans";
+
+/* Dark Grey: #393939
+Deep Orange: #FF5A09
+
+Dark Slate: #1d1e22*/
+
+body{font-family: 'Poppins', sans-serif;
+     background: #fafafa}
+
+p{font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1.7em;
+	color: #999;
+}
+span{
+  font-family: 'Poppins', sans-serif;
+}
+.logo{
+  font-family: 'Black Han Sans', sans-serif;
+  color: #FF5A09;
+}
+.btn-icon{
+  font-family: 'Black Han Sans', sans-serif;
+
+  color: #FF5A09;
+  background: #1d1e22;
+}
+.menu-nav{
+  color: #FF5A09;
+
+}
+a,
+a:hover,
+a:focus{
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+.navbar{
+	padding: 15px 10px;
+	background: #fff;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 40px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.navbar-btn{
+	box-shadow: none;
+	outline: none!important;
+	border: none;
+}
+
+.line{
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px dashed #ddd;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #1d1e22;
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar.active{
+	margin-left: -250px;
+}
+
+#sidebar .sidebar-header{
+	padding: 20px;
+	background: #1d1e22;
+}
+#sidebar ul.components{
+	padding: 20px 0px;
+	border-bottom: 1px solid #1d1e22;
+}
+
+#sidebar ul p{
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+
+#sidebar ul li a{
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+#sidebar ul li a:hover {
+    color: #1d1e22;
+    /*naranja*/
+    background: #FF5A09;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #FF5A09;
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #000;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+a.download{
+	background: #fff;
+	color: #FF5A09;
+
+}
+a.article,
+a.article:hover {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+#content {
+    width: 100%;
+    padding: 0px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+footer{
+  background: #FF5A09;
+}
+.logo-f{
+    font-family: 'Black Han Sans', sans-serif;
+}
+h5{
+  font-size: 90%;
+}
+h6{
+  font-size: 70%;
+}
+/*Cards thematic*/
+.card-thematics {
+  height: 300px;
+  border-color: #FF5A09
+ }
+.card div p{
+ color: #1d1e22
+}
+
+
+.card-the-show{
+opacity: 0.2
+}
+.card h5 {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 1.5em;
+  color: #FF5A09;
+  text-align: center;
+
+}
+.title-thematic{
+  font-family: 'Black Han Sans', sans-serif;
+  color: #1d1e22;
+}
+/****************/
+
+/*****Titlulo de problematicas*****/
+.title-problematics{
+  font-family: 'Black Han Sans', sans-serif;
+  color: #1d1e22;
+}
+/****************/
+/****Formulario problematica*****/
+.form-problematic {
+    /*background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);*/
+    background: linear-gradient(to bottom, #FF5A09 0%,  #1d1e22 100%);
+}
+.title-n-problematic{
+    font-family: 'Black Han Sans', sans-serif;
+    color: #1d1e22;
+}
+
+/****************/
+
+@media(maz-width:768px){
+	#sidebar{margin-left: -250px;}
+	#sidebar.active{
+		margin-left: 0px;
+	}
+	#sidebarCollapse span{
+		display: none;
+	}
+}

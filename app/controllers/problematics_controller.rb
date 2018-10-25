@@ -8,8 +8,8 @@ class ProblematicsController < ApplicationController
 
     @problematics=Problematic.joins(thematic: :location).where("thematic_id = ? AND thematics.location_id = ?" , session[:thematic_id], session[:location_id])
 
-    #@thematic = @location.thematic.find(params[:thematic_id])
-    #@thematic = Thematic.find(params[:thematic_id])
+
+    @thematic = Thematic.where("id = ? AND location_id = ?" , session[:thematic_id], session[:location_id])
 
     #@problematics = @thematic.problematic.where("location_id = ?" , params[:location_id])
     #@problematics = Problematic.where("thematic_id = ? AND location_id = ?" , params[:thematic][:id], params[:location_id])
@@ -22,6 +22,8 @@ class ProblematicsController < ApplicationController
   # GET /problematics/1
   # GET /problematics/1.json
   def show
+  #   render 'show.json.jbuilder'
+
   end
 
   # GET /problematics/new
@@ -40,7 +42,7 @@ class ProblematicsController < ApplicationController
 
     @thematic = Thematic.find(session[:thematic_id])
     @problematic = @thematic.problematic.new(problematic_params)
-
+    @problematic.image.attach(params[:problematic][:image])
     respond_to do |format|
       if @problematic.save
         format.html { redirect_to @problematic, notice: 'Problematic was successfully created.' }

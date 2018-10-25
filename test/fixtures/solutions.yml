@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  autor_sol: MyString
+  contenido_sol: MyText
+  me_gusta_sol: 1
+  problematic: one
+
+two:
+  autor_sol: MyString
+  contenido_sol: MyText
+  me_gusta_sol: 1
+  problematic: two

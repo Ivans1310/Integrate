@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+     <meta charset="UTF-8">
     <title>Integrate</title>
     <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
@@ -11,57 +12,179 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <div class="container">
-      <a class="navbar-brand" ><h1 class="logo text-warning"> <%= link_to "Intégrate", welcome_index_path%>  </h1></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <!--ml-auto para mover el menu a la derecha -->
-         <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="#header"><h4>Home</h4></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#experence"><h4>Cuidadanos</h4></a>
-          </li>
-          <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="#education"><h4><%= link_to 'Thematicas', {:controller => "thematics", :action => "index", :location_id => current_user.location_id }  %> </h3></a>
-          </li>
-          <% end %>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#skills"><h4>Equipos</h3></a>
-          </li>
-          <% if user_signed_in? %>
-              <li class="nav-item m-auto">
-                <h4 ><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></h4>
-              </li>
-              <li class="nav-item m-auto">
-                <h6 class=""><%= current_user.email%> </h6>
-              </li>
-           <% else %>
-               <li class="nav-item m-auto">
-                 <h4 class="text-success "><%= link_to "Iniciar sesión", new_user_session_path %></h4>
-               </li>
-               <li class="nav-item m-auto">
-                 <h4><%= link_to "Crear cuenta", new_user_registration_path %></h4>
-               </li>
-           <% end %>
+    <div class="wrapper">
+       	<nav id="sidebar" class="">
+       		<div class="sidebar-header ">
+       			<h3 class="logo  font-weight-bold">INTEGRATE</h3>
+       		</div>
 
 
-        </ul>
-      </div>
-    </div>
-  </nav>
+       		<ul class="list-unstyled components">
+            <li class="active ">
+              <i  style= "font-family: 'Poppins', sans-serif;">  <%= link_to ' Home',welcome_index_url ,  class:"fa fa-home",  style:"font-family: 'Poppins', sans-serif;" %></i>
+       			 </li>
+
+       			<li>
+       				<a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>   Dashboard </a>
+       			</li>
+       			<li>
+       				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users" aria-hidden="true"></i><span> ¿Como integrarte?</span></a>
+       				<ul class="collapse list-unstyled" id="pageSubmenu">
+       					<li>
+       						<a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> <span>Como ciudadano </span> </a>
+       					</li>
+       					<li>
+       						<a href="#"> <i class="fa fa-university" aria-hidden="true"></i> <span> Como Representante</span> </a>
+       					</li>
+
+       				</ul>
+       			</li>
+            <% if user_signed_in? %>
+            <li>
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fa fa-cubes" aria-hidden="true"></i></i><span> Tematicas</span></a>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li class="" >
+                  <a> <%= link_to 'Movilidad', {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 1},class:"fa fa-road" %> </a>
+                </li>
+                <li class="d-inline-flex">
+                  <a><i class="fa fa-pagelines" aria-hidden="true"></i> <span> <%= link_to 'Contaminacion',  {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 2}%></span> </a>
+                </li>
+                <li class="d-inline-flex">
+                  <a href="#"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <span>  <%= link_to 'Seguridad', {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 3}%></span> </a>
+                </li>
+                <li class="d-inline-flex">
+                  <a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i><span>  <%= link_to 'Cultura y recreacion',  {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 4}%></span> </a>
+                </li>
+              </ul>
+            </li>
+
+      <% end %>
+
+       			<li>
+       				<a href="#">Contactanos</a>
+       			</li>
+       		</ul>
+
+       		<ul class="list-unstyled CTAs">
+       			<li>
+       				<a href="#" class="download"><i class="fa fa-mobile size:3x" style="font-size:48px;" aria-hidden="true"></i> <br> Descarga nuestra App </a>
+       			</li>
+
+       		</ul>
+       	</nav>
+
+        <!-- Contenido general-->
+       	<div id="content">
+       		<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+       		<button type="button" id="sidebarCollapse" class="btn btn-icon position-fixed">
+       			<i class="fa fa-align-justify"></i> <span class="font-weight-bold" > IN </span>
+       		</button>
+
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto  ">
+                <li class="nav-item active border-left border-dark menu-nav pl-3 pr-3 ">
+                  <a class="nav-link" href="#"> <i class="fa fa-home" aria-hidden="true"></i><span class="menu-nav"> Home</span> <span class="sr-only">(current)</span></a>
+                </li>
+                <% if user_signed_in? %>
+                    <li class="nav-item border-left border-dark pl-3 pr-3 pt-2 menu-nav">
+                       <span class=""> Hola <%= current_user.nombre_us%>! </span>
+                    </li>
+                    <li class="nav-item border-left border-dark pl-3 pr-3 pt-2">
+                      <i class="fa fa-sign-out m-auto" aria-hidden="true"></i>
+                    <span style="font-size: 50%; " class="menu-nav "> <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></span>
+                    </li>
+
+                 <% else %>
+                     <li class="nav-item border-left border-dark pl-3 pr-3 pt-2">
+                      <span><i class="fa fa-sign-in" aria-hidden="true"></i></span> <span class="menu-nav" style="font-size: 80%;"> <%= link_to "Iniciar sesión", new_user_session_path %></span>
+                     </li>
+                     <li class="nav-item border-left border-dark pl-3 pr-3 pt-2">
+                      <span>  <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> <span class="menu-nav" style="font-size: 80%;"> <%= link_to "Registrate", new_user_registration_path %></span>
+                     </li>
+                 <% end %>
+              </ul>
+            </div>
+          </nav>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+
+          <%= yield %>
 
 
 
-    <%= yield %>
+     <!-- Contenido general-->
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+
+
+        <!-- Footer-->
+        <footer id="contact " class=" border-dark d-flex align-items-end" style="border-style: solid; border-width: 2px;">
+          <section id="contact" class="footer-all"> </section>
+          <div class="footer">
+            <div class="row">
+              <div class="col-lg-6 text-center mt-5 ">
+                <section class="text-left ml-5 pl-3 border-left border-dark">
+                  <h5 class="logo-f">Integrate</h5>
+                  <h5>Ministerio de Técnologia de información y las comunicaciones de Colombia</h5>
+                  <h5>Fedesof</h5>
+                  <h5>Colciencias</h5>
+                  <h5>www.mintic.gov.co</h5>
+                </section>
+
+
+
+              </div>
+              <div class="col-lg-6 my-3 text-center">
+                <div class="resume-section p-3 p-lg-5 d-flex flex-column">
+                  <span> Encuentranos en:</span>
+                  <ul class="list-inline dev-icons display-4  border-left border-dark">
+                      <li class="list-inline-item">
+                        <a href="#" target="_blank">
+                        <i class="fa fa-instagram "></i>
+                         </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="mailto:ing.ivaneduardosanchez" target="_black">
+                        <i class="fa fa-envelope fa-sm"></i>
+                         </a>
+                      </li>
+                      <li class="list-inline-item ">
+                        <a href="#" target="_blank " >
+                        <i class="fa fa-facebook fa-sm"></i>
+                         </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" target="_blank">
+                          <i class="fa fa-twitter"></i>
+                         </a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <h6 class="text-center p-auto">Copyright &copy;. Integrate. Todos los derechos reservador</h6>
+
+
+          </div>
+        </footer >
+          <!-- Cierre del contenido-->
+          </div>
+        <!-- Cierre del wrapper-->
+       </div>
+
+
+ <script>
+ 	    $(document).ready(function(){
+ 			$('#sidebarCollapse').on('click',function(){
+ 				$('#sidebar').toggleClass('active');
+ 			});
+ 		});
+ 	</script>
+
   </body>
 </html>

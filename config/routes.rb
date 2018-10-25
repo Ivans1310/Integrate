@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   resources :locations
   resources :thematics
-  resources :problematics
-  
+  resources :problematics do
+    resources :solutions
+  end
+
+
 
 
   # resources :articles , except: [:delete] o , only: [:create] // en este cas este comando genera todas las rutas para CRUD del modelo Articles

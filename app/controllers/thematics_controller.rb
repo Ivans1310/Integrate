@@ -21,8 +21,9 @@ class ThematicsController < ApplicationController
   # GET /thematics/1.json
   def show
     session[:thematic_id] = params[:id]
+    session[:location_id] = params[:location_id]
 
-    @thematic = Thematic.where("id = ? AND location_id = ?" , session[:thematic_id], session[:location_id])
+    @thematic = Thematic.where("id = ? AND location_id = ?" , session[:thematic_id], params[:location_id])
 
     #@thematic = @location.thematic.find(params[:id])
 

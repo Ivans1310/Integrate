@@ -2,7 +2,7 @@
 En los campos se puso la clase de bootstrap form-control, de la forma como lo admite por ejemplo f.password_field
 al igual que el estilo del boton en el f.submit, estos osn metodos
 -->
-<div class="mx-auto mt-5" style="width: 600px; height: 300px;">
+<div class="mx-auto mt-1 mb-5" style="width: 600px;">
 <h2>Crea cuenta</h2>
 <div class="form-group">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -30,20 +30,21 @@ al igual que el estilo del boton en el f.submit, estos osn metodos
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" , class:"form-control"%>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password" , class:"form-control"%>
     </div>
 
     <div class="field my-auto">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class:"form-control" %>
     </div>
 
     <div class="actions mt-3">
-      <%= f.submit "Sign up",class:"btn btn-primary" %>
+      <%= f.submit "Sign up",class:"btn btn-warning" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <h4 class="pt-2">O si ya tienes cuenta , ingresa por aqui:</h4>
+  <button type="button" ><%= render "devise/shared/links" %></button>
 </div>
 
 

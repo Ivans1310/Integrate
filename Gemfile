@@ -27,7 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem "devise"
+gem 'paperclip'
 
+gem "font-awesome-rails"
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'

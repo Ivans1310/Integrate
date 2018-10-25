@@ -7,6 +7,7 @@ class CreateProblematics < ActiveRecord::Migration[5.2]
       t.boolean :te_perjudica
       t.text :descripcion_prueba
       t.text :usuario
+      
 
 
       t.timestamps
