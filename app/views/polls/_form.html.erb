@@ -1,0 +1,65 @@
+
+<div class="form-group mx-auto" >
+  <%= form_with(model: poll, local: true) do |form| %>
+    <% if poll.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+
+        <ul>
+        <% poll.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field align-baseline">
+      <%= form.label :nombre_de_La_Consulta , class:"font-weight-bold border rounded p-1 border-dark m-2"%>
+      <p class="">Asigna un nombre que identifique la nueva problematica</p>
+      <%= form.text_field :nombre_po ,autofocus: true, class:"form-control w-50"%>
+    </div>
+
+    <div class="field">
+      <%= form.label :pregunta, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
+      <p>Entre mas detalles de la problematica que propones tendra una mejor acogida,
+        No escatimes en detalles, especifica ubicacion, a quien afecta y hasta una posible solucion. </p>
+      <%= form.text_area :pregunta,autofocus: true, class:"form-control",rows:"5" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :Primera_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
+
+      <%= form.text_area :Opcion1,autofocus: true, class:"form-control",rows:"2" %>
+    </div>
+    <div class="field">
+      <%= form.label :Segunda_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
+
+      <%= form.text_area :Opcion2,autofocus: true, class:"form-control",rows:"2" %>
+    </div>
+    <div class="field">
+      <%= form.label :Tercera_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
+
+      <%= form.text_area :Opcion3,autofocus: true, class:"form-control",rows:"2" %>
+    </div>
+    <div class="field">
+      <%= form.label :Cuarta_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
+
+      <%= form.text_area :Opcion4,autofocus: true, class:"form-control",rows:"2" %>
+    </div>
+
+
+    <div class="field ">
+      <%= form.label :categoria,class:"font-weight-bold text-light border rounded p-1 border-light mb-2 mt-4" %><br />
+      <p>Seleccion la categoria a la cual pertenece tu problematica</p>
+      <%= form.select(:categoria_po, options_for_select([['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 1), class:"form-control ") %>
+
+    </div>
+
+      <%= form.hidden_field :usuario, :value => current_user.nombre_us %>
+
+    <div class="actions my-3 text-center">
+      <%= form.submit "Crea la nueva Consulta", class:"btn btn-warning " %>
+    </div>
+  <% end %>
+
+</div>

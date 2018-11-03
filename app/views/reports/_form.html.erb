@@ -1,12 +1,11 @@
-
 <div class="form-group mx-auto" >
-  <%= form_with(model: problematic, local: true) do |form| %>
-    <% if problematic.errors.any? %>
+  <%= form_with(model: report, local: true) do |form| %>
+    <% if report.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(problematic.errors.count, "error") %> prohibited this problematic from being saved:</h2>
+        <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
         <ul>
-        <% problematic.errors.full_messages.each do |message| %>
+        <% report.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
@@ -14,16 +13,16 @@
     <% end %>
 
     <div class="field align-baseline">
-      <%= form.label :nombre_de_problematica , class:"font-weight-bold border rounded p-1 border-dark m-2"%>
+      <%= form.label :nombre_de_noticia , class:"font-weight-bold border rounded p-1 border-dark m-2"%>
       <p class="">Asigna un nombre que identifique la nueva problematica</p>
-      <%= form.text_field :nombre_pr ,autofocus: true, class:"form-control w-50"%>
+      <%= form.text_field :nombre_re ,autofocus: true, class:"form-control w-50"%>
     </div>
 
     <div class="field">
-      <%= form.label :descripcion_de_problematica, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
+      <%= form.label :descripcion_de_noticia, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
       <p>Entre mas detalles de la problematica que propones tendra una mejor acogida,
         No escatimes en detalles, especifica ubicacion, a quien afecta y hasta una posible solucion. </p>
-      <%= form.text_area :descripcion_pr,autofocus: true, class:"form-control",rows:"10" %>
+      <%= form.text_area :descripcion_re,autofocus: true, class:"form-control",rows:"10" %>
     </div>
 
     <div class="field ">
@@ -35,15 +34,15 @@
 
     <div class="field ">
       <%= form.label :categoria,class:"font-weight-bold text-light border rounded p-1 border-light mb-2 mt-4" %><br />
-      <p>Seleccion la categoria a la cual pertenece tu problematica</p>
-      <%= form.select(:categoria_pr, options_for_select([['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 1), class:"form-control ") %>
+      <p>Seleccion la categoria a la cual pertenece esta noticia</p>
+      <%= form.select(:categoria_re, options_for_select([['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 1), class:"form-control ") %>
 
     </div>
 
       <%= form.hidden_field :usuario, :value => current_user.nombre_us %>
 
     <div class="actions my-3 text-center">
-      <%= form.submit "Crea la nueva problematica", class:"btn btn-warning " %>
+      <%= form.submit "Crea la nueva Noticia", class:"btn btn-warning " %>
     </div>
   <% end %>
 

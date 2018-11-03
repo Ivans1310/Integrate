@@ -4,20 +4,31 @@ class ProblematicsController < ApplicationController
 
   # GET /problematics
   # GET /problematics.json
+
+
+
   def index
 
-    @problematics=Problematic.joins(thematic: :location).where("thematic_id = ? AND thematics.location_id = ?" , session[:thematic_id], session[:location_id])
+    #@problematics=Problematic.joins(thematic: :location).where("thematic_id = ? AND thematics.location_id = ?" , session[:thematic_id], session[:location_id])
+
+    #session[:location_id]=params[:id]
+    #@problematics = Problematic.where(nil)
 
 
-    @thematic = Thematic.where("id = ? AND location_id = ?" , session[:thematic_id], session[:location_id])
+    if !params[:categoria_pr].present? || params[:categoria_pr] =="all"
+      @problematics = Problematic.where("location_id = ?" , current_user.location_id)
 
-    #@problematics = @thematic.problematic.where("location_id = ?" , params[:location_id])
-    #@problematics = Problematic.where("thematic_id = ? AND location_id = ?" , params[:thematic][:id], params[:location_id])
+    else
+      @problematics = Problematic.where("location_id = ? AND categoria_pr = ?" , current_user.location_id, params[:categoria_pr])
+
+    end
+
+  #  @problematics = Problematic.categoria_pr(params[:categoria_pr]) if params[:categoria_pr].present?
 
     #@locations = Location.find(params[:location_id])
-    #@thematics = @locations.thematic.find(params[:thematic_id])
     #@problematics = @thematics.problematic
   end
+
 
   # GET /problematics/1
   # GET /problematics/1.json
@@ -40,8 +51,8 @@ class ProblematicsController < ApplicationController
   # POST /problematics.json
   def create
 
-    @thematic = Thematic.find(session[:thematic_id])
-    @problematic = @thematic.problematic.new(problematic_params)
+    @location = Location.find(current_user.location_id)
+    @problematic = @location.problematic.new(problematic_params)
     @problematic.image.attach(params[:problematic][:image])
     respond_to do |format|
       if @problematic.save
@@ -89,6 +100,6 @@ class ProblematicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def problematic_params
 
-      params.require(:problematic).permit(:nombre_pr, :descripcion_pr, :te_perjudica, :usuario)
+      params.require(:problematic).permit(:nombre_pr, :descripcion_pr, :te_perjudica, :usuario, :categoria_pr)
     end
 end

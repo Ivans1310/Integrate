@@ -1,0 +1,50 @@
+
+
+<div class="jumbotron p-3 p-md-5 text-white rounded mx-5 d-flex flex-row " style="background:#1d1e22;">
+      <div class="col-md-6 px-0 mr-5 ">
+        <div class="display-4 font-italic d-flex " style="">
+          <i class="fa fa-clipboard"></i> <h1 class="mx-3 mt-2">Consultas&nbsp;</h1>
+        </div>
+        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+      </div>
+      <div class="input-group my-auto ml-5 d-flex-inline">
+
+        <div class="">
+          <%= form_tag({:controller => "problematics", :action => "index"}, :method => "get") %>
+
+
+          <%= select_tag(:categoria_pr, options_for_select([['Todas', 'all'],['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 5), class:" custom-select" )%>
+        </div>
+        <div class="input-group-prepend">
+        <%= submit_tag "Filtrar" , class:"btn btn-warning mx-2" %>
+        </div>
+
+     </div>
+</div>
+
+
+<div class="w-75 mx-auto ">
+  <% @polls.each do |poll| %>
+  <div class="d-flex  text-light mb-3 rounded" style="background:#1d1e22; ">
+    <div class="flex-grow-1 p-2 d-flex">
+      <h3 class=""> <%= poll.nombre_po %></h3> <p class="ml-3 text-muted">Consulta #<%= poll.id %></p>
+    </div>
+    <div class="p-2 ">
+      <p class="my-auto  " style="color:#FF5A09; "><%= poll.categoria_po %></p>
+    </div>
+    <div class="p-2 my-auto">
+      <button type="button" class="btn btn-outline-light">
+        <%= link_to 'Participar', poll %>
+        <span class="badge badge-info"><%=poll.votes_for.size%> votos</span>
+      </button>
+
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="mx-auto " style="width:300px;">
+  <% if current_user.roll == 'Representante'%>
+  <%= link_to 'Crea un nueva consulta', new_poll_path, class:"btn btn-warning my-5" %>
+  <%end%>
+</div>

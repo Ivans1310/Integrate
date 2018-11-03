@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :nombre_us
       t.string :apellido_us
       t.string :cedula_us
-      t.string :edad_us
+      t.string :roll
 
 
       t.timestamps null: false

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_25_022251) do
+ActiveRecord::Schema.define(version: 2018_11_01_200519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(version: 2018_10_25_022251) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "ideas", force: :cascade do |t|
-    t.string "autor_idea"
-    t.text "contenido"
-    t.integer "me_gusta"
-    t.bigint "problematic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["problematic_id"], name: "index_ideas_on_problematic_id"
-  end
-
   create_table "locations", force: :cascade do |t|
     t.integer "num_loc"
     t.string "nombre_loc"
@@ -53,16 +43,67 @@ ActiveRecord::Schema.define(version: 2018_10_25_022251) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "news", force: :cascade do |t|
+    t.bigint "location_id"
+    t.string "nombre_new"
+    t.string "descripcion_new"
+    t.integer "like_new"
+    t.string "categoria_new"
+    t.string "usuario"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_news_on_location_id"
+  end
+
+  create_table "noticia", force: :cascade do |t|
+    t.bigint "location_id"
+    t.string "nombre_not"
+    t.string "descripcion_not"
+    t.integer "like_not"
+    t.string "categoria_not"
+    t.string "usuario"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_noticia_on_location_id"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.bigint "location_id"
+    t.string "nombre_po"
+    t.string "pregunta"
+    t.string "opcion1"
+    t.string "opcion2"
+    t.string "opcion3"
+    t.string "opcion4"
+    t.string "categoria_po"
+    t.string "usuario"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_polls_on_location_id"
+  end
+
   create_table "problematics", force: :cascade do |t|
+    t.bigint "location_id"
     t.string "nombre_pr"
     t.text "descripcion_pr"
-    t.boolean "te_perjudica"
-    t.text "descripcion_prueba"
+    t.integer "te_perjudica"
+    t.text "categoria_pr"
     t.text "usuario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "thematic_id"
-    t.index ["thematic_id"], name: "index_problematics_on_thematic_id"
+    t.index ["location_id"], name: "index_problematics_on_location_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "location_id"
+    t.string "nombre_re"
+    t.string "descripcion_re"
+    t.integer "like_re"
+    t.string "categoria_re"
+    t.string "usuario"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_reports_on_location_id"
   end
 
   create_table "solutions", force: :cascade do |t|
@@ -75,14 +116,6 @@ ActiveRecord::Schema.define(version: 2018_10_25_022251) do
     t.index ["problematic_id"], name: "index_solutions_on_problematic_id"
   end
 
-  create_table "thematics", force: :cascade do |t|
-    t.bigint "location_id"
-    t.string "nombre_te"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_thematics_on_location_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.bigint "location_id"
     t.string "email", default: "", null: false
@@ -93,7 +126,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_022251) do
     t.string "nombre_us"
     t.string "apellido_us"
     t.string "cedula_us"
-    t.string "edad_us"
+    t.string "roll"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -101,9 +134,25 @@ ActiveRecord::Schema.define(version: 2018_10_25_022251) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ideas", "problematics"
-  add_foreign_key "problematics", "thematics"
+  create_table "votes", id: :serial, force: :cascade do |t|
+    t.string "votable_type"
+    t.integer "votable_id"
+    t.string "voter_type"
+    t.integer "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  end
+
+  add_foreign_key "news", "locations"
+  add_foreign_key "noticia", "locations"
+  add_foreign_key "polls", "locations"
+  add_foreign_key "problematics", "locations"
+  add_foreign_key "reports", "locations"
   add_foreign_key "solutions", "problematics"
-  add_foreign_key "thematics", "locations"
   add_foreign_key "users", "locations"
 end

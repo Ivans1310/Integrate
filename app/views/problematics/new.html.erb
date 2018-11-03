@@ -2,10 +2,10 @@
 
 
 
-<div class=" jumbotron  form-problematic w-75 mx-auto text-center" >
-  <h2 class="title-n-problematic">Nueva problemática</h2>
+<div class=" jumbotron  form-problematic  mx-5 " >
+  <h2 class=" display-4 font-italic font-weight-bold text-center mb-3">Nueva problemática</h2>
 
 
 <%= render 'form', problematic: @problematic %>
 </div>
-<%= link_to 'Back', problematics_path ,class:"btn btn-outline-info m-5"%>
+<%= link_to 'Back', {:controller => "problematics", :action => "index", :categoria_pr => "all"}, class:"btn btn-outline-dark m-5" %> |

@@ -1,0 +1,128 @@
+
+
+
+<div class=" mx-5 mb-5">
+  <div class="display-2">
+    <i class="fa fa-clipboard"></i>
+
+  </div>
+  <p>Creada:<%= @poll.created_at %></p>
+  <div class="row ">
+    <strong class="display-4 d-flex-inline"><%= @poll.nombre_po %></strong> <p class="d-flex-inline mt-4 ml-3 mr-1">por </p> <p class="text-info  mt-4 "> <%= @poll.usuario %> </p>
+
+  </div>
+
+
+
+  <p class="lead"> <%= @poll.pregunta %></p>
+
+
+  <%= form_tag(like_poll_path(@poll.id), :method => "put") %>
+  <div class="row">
+    <div class="col">
+      <div class="input-group my-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <%= radio_button_tag(:opcion, "opcion1", class:"") %>
+          </div>
+        </div>
+        <%= label_tag(:opcion1, @poll.opcion1, class:"form-control") %>
+      </div>
+    </div>
+
+    <div class="col ">
+
+      <% if current_user.voted_for? @poll%>
+      <div class=" mt-2  d-flex-inline  rounded  w-25 text-center" style="border-color:#FF5A09; border-style: outset;">
+        <strong>Votos:</strong>
+        <strong class="text-success">  <%= @poll.get_likes(:vote_scope=>'opcion1').size%></strong>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <div class="input-group my-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <%= radio_button_tag(:opcion, "opcion2", class:"") %>
+          </div>
+        </div>
+        <%= label_tag(:opcion2, @poll.opcion2, class:"form-control") %>
+      </div>
+    </div>
+    <div class="col">
+      <% if current_user.voted_for? @poll%>
+      <div class=" mt-2  d-flex-inline  rounded w-25 text-center" style="border-color:#FF5A09; border-style: outset;">
+        <strong>Votos:</strong>
+        <strong class="text-success">  <%= @poll.get_likes(:vote_scope=>'opcion2').size%></strong>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="input-group my-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <%= radio_button_tag(:opcion, "opcion3", class:"") %>
+          </div>
+        </div>
+        <%= label_tag(:opcion3, @poll.opcion3, class:"form-control") %>
+      </div>
+    </div>
+    <div class="col">
+      <% if current_user.voted_for? @poll%>
+      <div class=" mt-2  d-flex-inline  rounded  w-25 text-center" style="border-color:#FF5A09; border-style: outset;">
+        <strong>Votos:</strong>
+        <strong class="text-success">  <%= @poll.get_likes(:vote_scope=>'opcion3').size%></strong>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="input-group my-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <%= radio_button_tag(:opcion, "opcion4", class:"") %>
+          </div>
+        </div>
+        <%= label_tag(:opcion4, @poll.opcion4, class:"form-control") %>
+      </div>
+    </div>
+    <div class="col">
+      <% if current_user.voted_for? @poll%>
+      <div class=" mt-2  d-flex-inline  rounded  w-25 text-center" style="border-color:#FF5A09; border-style: outset;">
+        <strong>Votos:</strong>
+        <strong class="text-success">  <%= @poll.get_likes(:vote_scope=>'opcion4').size%></strong>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= hidden_field_tag :id, :value => @poll.id %>
+
+  <div class="input-group-prepend">
+      <% if !current_user.voted_for? @poll%>
+      <%= submit_tag "Enviar" , class:"btn btn-warning my-2" %>
+      <% else %>
+      <p class="text-success lead">Gracias por participar!</p>
+      <% end %>
+
+  </div>
+
+</div>
+
+<div class="m-5">
+  <%= link_to 'Back', polls_path, class:"btn btn-outline-dark" %>
+  <% if current_user.roll == 'Representante'%>
+    <%= link_to 'Edit', edit_poll_path(@poll),class:"btn btn-outline-info" %> |
+    <%= link_to 'Destroy', @poll, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-outline-danger"%>
+  <%end%>
+</div>

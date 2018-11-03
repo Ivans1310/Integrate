@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  location: one
-  nombre_te: MyString
-
-two:
-  location: two
-  nombre_te: MyString

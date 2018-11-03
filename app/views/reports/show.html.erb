@@ -1,0 +1,50 @@
+<div class="text-center border-left border-right w-25 mx-auto  titulo-localidad border-dark " >
+  <h2 >  <%=Location.find(current_user.location_id).nombre_loc %></h2>
+</div>
+
+<div class="mx-3 my-4">
+  <p class="" style="color:orange">
+      <%= @report.categoria_re %>
+  </p>
+  <%if @report.image.attached? %>
+  <%= image_tag @report.image ,class:"img-fluid rounded", alt:"Responsive image " , style:"width:600px; height450px"%>
+  <% else %>
+  <%#POr un error no es posible cargar la imagen por defecto%>
+  <%= image_tag "/../members-42919_1280.png" ,class:"img-fluid rounded", alt:"Responsive image" , style:"width:600px; height450px" %>
+
+  <% end %>
+
+</div>
+
+
+<div class=" mx-3">
+
+  <div class="display-4 font-italic font-weight-bold border-bottom">
+    <%= @report.nombre_re %>
+  </div>
+
+  <div class="d-flex">
+    <p class="">Creada por: </p> <p class="text-info ml-3"><%= @report.usuario %></p>
+
+  </div>
+
+  <div class="border-bottom">
+  <p class="lead text-dark"><%= @report.descripcion_re %></p>
+  </div>
+
+  <p class="text-monospace"><%= @report.created_at %></p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>

@@ -1,0 +1,7 @@
+<div class=" jumbotron  form-problematic  mx-5 " >
+  <h2 class=" display-4 font-italic font-weight-bold text-center mb-3">Edita la  Consulta</h2>
+
+
+<%= render 'form', poll: @poll%>
+</div>
+<%= link_to 'Back', {:controller => "polls", :action => "index", :categoria_po => "all"}, class:"btn btn-outline-dark m-5" %> |

@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<div class="text-center border-left border-right w-25 mx-auto  titulo-localidad border-dark " >
+  <h2 >  <%=Location.find(current_user.location_id).nombre_loc %></h2>
+</div>
+<div class="jumbotron p-3 p-md-5 text-white rounded mx-5 d-flex flex-row " style="background:#1d1e22;">
+      <div class="col-md-6 px-0 mr-5 ">
+        <div class="display-4 font-italic d-flex " style="">
+          <i class="fa fa-comments "></i> <h1 class="mx-3 mt-2">NOTICIAS&nbsp;</h1>
+        </div>
+        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+      </div>
+      <div class="input-group my-auto ml-5 d-flex-inline">
+
+        <div class="">
+
+          <%= form_tag({:controller => "reports", :action => "index"}, :method => "get") %>
+
+
+          <%= select_tag(:categoria_re, options_for_select([['Todas', 'all'],['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 5), class:" custom-select" )%>
+        </div>
+        <div class="input-group-prepend">
+        <%= submit_tag "Filtrar" , class:"btn btn-warning mx-2" %>
+        </div>
+
+     </div>
+</div>
+
+
+
+<div class="card-columns mx-5 ">
+  <% @reports.each do |report| %>
+  <div class="card">
+    <%if report.image.attached? %>
+      <%= image_tag report.image ,class:"card-img-top", alt:"Card image cap" %>
+    <%else %>
+    <%= image_tag "https://image.freepik.com/foto-gratis/material-fondo-textura-tablon-madera_53876-33591.jpg" ,class:"card-img-top", alt:"Thumbnail [250x200]" , style:"width: 250px; height: 200px;" %>
+
+    <%end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= report.nombre_re %></h5>
+      <p> Categoria: <%= report.categoria_re %></p>
+      <%= link_to 'Mas detalles', report_path(report) , class:"btn btn-outline-danger", style:" border: #FF5A09"%>
+    </div>
+  </div>
+  <% end %>
+
+</div>
+
+<div class="mx-auto " style="width:300px;">
+  <%= link_to 'Crea un nueva Noticia', new_report_path, class:"btn btn-warning my-5" %>
+
+</div>

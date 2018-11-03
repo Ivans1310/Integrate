@@ -1,10 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="text-center border-left border-right w-25 mx-auto  titulo-localidad border-dark " >
+  <h2 >  <%=Location.find(current_user.location_id).nombre_loc %></h2>
+</div>
 
 <div class="card flex-md-row mb-4 box-shadow h-md-250 mx-3 ">
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">Propuesta # <%= @problematic.id %></strong>
-              <a href="# text-muted"> Publicada por:</a>
-              <div class="mb-1 text-muted"><%= @problematic.usuario %></div>
+             <div class=" d-flex flex-row">
+               <a href="# text-muted"> Publicada por: &nbsp;</a>
+               <div class="mb-1 text-muted"><%= @problematic.usuario %>
+             </div>
+            </div>
               <h3 class="mb-0">
                   <%= @problematic.nombre_pr %>
               </h3>
@@ -15,27 +20,34 @@
 
               <div class="mb-1 text-muted">Creada: <%= @problematic.created_at %></div>
             </div>
+            <%if @problematic.image.attached? %>
             <%= image_tag @problematic.image ,class:"card-img-right flex-auto d-none d-md-block", alt:"Thumbnail [500x500]" , style:"width: 500px; height: 500px;"%>
+            <% else %>
+            <%#POr un error no es posible cargar la imagen por defecto%>
+            <%= image_tag "/../members-42919_1280.png" ,class:"card-img-right flex-auto d-none d-md-block", alt:"Thumbnail [500x500]" , style:"width: 500px; height: 500px;" %>
+
+            <% end %>
+
 </div>
 
 
 <div class="mx-3">
-  <h2>Soluciones planteadas</h2>
-  <hr>
+  <h2 class="font-weight-bold border rounded p-1  m-2 w-50 text-center" style="border-color:#FF5A09;">Soluciones planteadas</h2>
+  <hr class="" style="background:#FF5A09;">
 </div>
 
 
 <div class="mx-3">
   <% @problematic.solution.each do |solution|%>
 
-      <strong> <h4><%= solution.autor_sol %></h3></strong>
+      <strong> <h4><%= solution.autor_sol %></h4></strong>
 
 
     <p>
       <strong> Ideas :</strong>
       <%= solution.contenido_sol %>
     </p>
-    <hr>
+    <hr class=""style="background:#FF5A09;">
   <% end %>
 </div>
 
@@ -54,12 +66,15 @@
     <%= form.text_area :contenido_sol, class:"form-control", placeholder:"Ingrese una posible solucion" %>
   </div>
 
-  <%= form.submit "Publicar soluciones o comentario" , class:"btn btn-primary my-2"%>
+  <%= form.submit "Publicar soluciones o comentario" , class:"btn btn-outline-dark my-2"%>
   <% end %>
 </div>
 
 
 <div class="m-5">
-  <%= link_to 'Back', problematics_path, class:"btn btn-outline-dark" %> |
-  <%= link_to 'Edit', edit_problematic_path(@problematic),class:"btn btn-outline-info" %>
+  <%= link_to 'Back', {:controller => "problematics", :action => "index", :categoria_pr => "all"}, class:"btn btn-outline-dark" %> |
+  <% if current_user.roll == 'Representante'%>
+    <%= link_to 'Edit', edit_problematic_path(@problematic),class:"btn btn-outline-info" %>
+    <%= link_to 'Destroy', @problematic, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-outline-danger"%>
+  <%end%>
 </div>

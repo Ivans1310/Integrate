@@ -26,8 +26,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
+gem 'acts_as_votable', '~> 0.11.1'
+
 gem "devise"
-gem 'paperclip'
+
 
 gem "font-awesome-rails"
 gem 'bootstrap'

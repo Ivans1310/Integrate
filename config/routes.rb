@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  resources :polls do
+    member do
+    put "like", to: "polls#upvote"
+    #put "dislike", to: "links#downvote"
+  end
+  end
+  resources :reports
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :locations
-  resources :thematics
   resources :problematics do
     resources :solutions
   end

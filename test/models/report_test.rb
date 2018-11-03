@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ThematicTest < ActiveSupport::TestCase
+class ReportTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

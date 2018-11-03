@@ -34,6 +34,11 @@ p{font-family: 'Poppins', sans-serif;
 span{
   font-family: 'Poppins', sans-serif;
 }
+.titulo-localidad{
+  font-family: 'Black Han Sans', sans-serif;
+  color:#393939;
+
+}
 .logo{
   font-family: 'Black Han Sans', sans-serif;
   color: #FF5A09;
@@ -232,4 +237,13 @@ opacity: 0.2
 	#sidebarCollapse span{
 		display: none;
 	}
+}
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 3;
+  }
 }

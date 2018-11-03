@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: one
+  nombre_po: MyString
+  pregunta: MyString
+  opcion1: MyString
+  opcion2: MyString
+  opcion3: MyString
+  opcion4: MyString
+  categoria_po: MyString
+  usuario: MyString
+
+two:
+  location: two
+  nombre_po: MyString
+  pregunta: MyString
+  opcion1: MyString
+  opcion2: MyString
+  opcion3: MyString
+  opcion4: MyString
+  categoria_po: MyString
+  usuario: MyString

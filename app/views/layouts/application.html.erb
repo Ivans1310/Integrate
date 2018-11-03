@@ -23,10 +23,15 @@
             <li class="active ">
               <i  style= "font-family: 'Poppins', sans-serif;">  <%= link_to ' Home',welcome_index_url ,  class:"fa fa-home",  style:"font-family: 'Poppins', sans-serif;" %></i>
        			 </li>
+             <% if user_signed_in?%>
 
-       			<li>
-       				<a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>   Dashboard </a>
-       			</li>
+               <% if current_user.roll == 'Representante'%>
+         			<li>
+         				<a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>   Dashboard </a>
+         			</li>
+              <%end%>
+            <%end%>
+
        			<li>
        				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users" aria-hidden="true"></i><span> ¿Como integrarte?</span></a>
        				<ul class="collapse list-unstyled" id="pageSubmenu">
@@ -41,19 +46,20 @@
        			</li>
             <% if user_signed_in? %>
             <li>
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fa fa-cubes" aria-hidden="true"></i></i><span> Tematicas</span></a>
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fa fa-cubes" aria-hidden="true"></i><span> Mecanismos de integracion</span></a>
               <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li class="" >
-                  <a> <%= link_to 'Movilidad', {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 1},class:"fa fa-road" %> </a>
+                  <a> <%= link_to 'Problematicas', {:controller => "problematics", :action => "index", :id => current_user.location_id , :categoria_pr=>"all"},class:"fa fa-road" %> </a>
                 </li>
                 <li class="d-inline-flex">
-                  <a><i class="fa fa-pagelines" aria-hidden="true"></i> <span> <%= link_to 'Contaminacion',  {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 2}%></span> </a>
+                  <a><%= link_to 'Noticias', {:controller => "reports", :action => "index",:id => current_user.location_id , :categoria_re=>"all"},class:"fa fa-pagelines" %> </a>
                 </li>
                 <li class="d-inline-flex">
-                  <a href="#"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <span>  <%= link_to 'Seguridad', {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 3}%></span> </a>
+                  <a><%= link_to 'Consultas', {:controller => "polls", :action => "index"},class:"fa fa-exclamation-triangle" %> </a>
+
                 </li>
                 <li class="d-inline-flex">
-                  <a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i><span>  <%= link_to 'Cultura y recreacion',  {:controller => "thematics", :action => "show", :location_id => current_user.location_id, :id => 4}%></span> </a>
+                  <a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i><span> Seguimiento de proyectos</span> </a>
                 </li>
               </ul>
             </li>
@@ -102,21 +108,70 @@
                      <li class="nav-item border-left border-dark pl-3 pr-3 pt-2">
                       <span><i class="fa fa-sign-in" aria-hidden="true"></i></span> <span class="menu-nav" style="font-size: 80%;"> <%= link_to "Iniciar sesión", new_user_session_path %></span>
                      </li>
-                     <li class="nav-item border-left border-dark pl-3 pr-3 pt-2">
-                      <span>  <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> <span class="menu-nav" style="font-size: 80%;"> <%= link_to "Registrate", new_user_registration_path %></span>
+                     <li class="nav-item border-left border-dark pl-3 pr-3 pt-1">
+                      <span>  <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> <span class="menu-nav" style="font-size: 80%;">
+                        <button type="button" class="btn" style="background: #FF5A09" data-toggle="modal" data-target="#exampleModal">
+                        Registrate
+                      </button>
+                      </span>
                      </li>
                  <% end %>
               </ul>
             </div>
           </nav>
+
+          <!-- Contenido general-->
+
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
 
           <%= yield %>
 
+          <!-- Modal informativo para el registro como ciudadano o Representante-->
+
+          <div class="modal fade "  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content " style=" border-color:#FF5A09; border-width:3px ">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">¿Como te integrarás?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body border-primary">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-6  ">
+                        <div class="display-4 text-center "  style="color:#FF5A09">
+                          <i class="fa fa-university" aria-hidden="true"></i>
+                        </div>
+                        <div class="">
+                          <p class="" style="font-size:85%">Si eres Representante contactate con el equipo de <a href="#"class="d-flex" style="color:#FF5A09">INTEGRATE</a>para verificar tu identidad</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ml-auto border-left">
+                        <div class="display-4 text-center "  style="color:#FF5A09">
+                          <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </div>
+                          <p style="font-size:85%">Para ciudadanos, haz click en el siguiente boton para tu registro</p>
+                          <button type="button" class="btn" style="background:#FF5A09"><%= link_to "Registrate", new_user_registration_path %></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- -------------------------->
 
 
-     <!-- Contenido general-->
+
+
+
 
 
 
