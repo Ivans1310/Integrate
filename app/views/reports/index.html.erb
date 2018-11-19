@@ -9,7 +9,7 @@
         </div>
         <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
       </div>
-      <div class="input-group my-auto ml-5 d-flex-inline">
+      <div class="input-group my-auto ml-5 d-flex flex-row">
 
         <div class="">
 
@@ -18,7 +18,7 @@
 
           <%= select_tag(:categoria_re, options_for_select([['Todas', 'all'],['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 5), class:" custom-select" )%>
         </div>
-        <div class="input-group-prepend">
+        <div class="">
         <%= submit_tag "Filtrar" , class:"btn btn-warning mx-2" %>
         </div>
 

@@ -43,30 +43,6 @@ ActiveRecord::Schema.define(version: 2018_11_01_200519) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "news", force: :cascade do |t|
-    t.bigint "location_id"
-    t.string "nombre_new"
-    t.string "descripcion_new"
-    t.integer "like_new"
-    t.string "categoria_new"
-    t.string "usuario"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_news_on_location_id"
-  end
-
-  create_table "noticia", force: :cascade do |t|
-    t.bigint "location_id"
-    t.string "nombre_not"
-    t.string "descripcion_not"
-    t.integer "like_not"
-    t.string "categoria_not"
-    t.string "usuario"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_noticia_on_location_id"
-  end
-
   create_table "polls", force: :cascade do |t|
     t.bigint "location_id"
     t.string "nombre_po"
@@ -148,8 +124,6 @@ ActiveRecord::Schema.define(version: 2018_11_01_200519) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-  add_foreign_key "news", "locations"
-  add_foreign_key "noticia", "locations"
   add_foreign_key "polls", "locations"
   add_foreign_key "problematics", "locations"
   add_foreign_key "reports", "locations"

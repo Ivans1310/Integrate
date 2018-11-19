@@ -20,8 +20,9 @@
 
 
        		<ul class="list-unstyled components">
-            <li class="active ">
-              <i  style= "font-family: 'Poppins', sans-serif;">  <%= link_to ' Home',welcome_index_url ,  class:"fa fa-home",  style:"font-family: 'Poppins', sans-serif;" %></i>
+            <li class="active flex-row d-flex ">
+              <a class="fa fa-home text-center "><%= link_to 'Home', welcome_index_url,class:"flex-fill" %></a>
+
        			 </li>
              <% if user_signed_in?%>
 
@@ -33,7 +34,7 @@
             <%end%>
 
        			<li>
-       				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users" aria-hidden="true"></i><span> ¿Como integrarte?</span></a>
+       				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users" aria-hidden="true"></i><span> ¿Cómo integrarte?</span></a>
        				<ul class="collapse list-unstyled" id="pageSubmenu">
        					<li>
        						<a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> <span>Como ciudadano </span> </a>
@@ -46,28 +47,33 @@
        			</li>
             <% if user_signed_in? %>
             <li>
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fa fa-cubes" aria-hidden="true"></i><span> Mecanismos de integracion</span></a>
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="fa fa-cubes" aria-hidden="true"></i><span> Mecanismos de integración</span></a>
               <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li class="" >
-                  <a> <%= link_to 'Problematicas', {:controller => "problematics", :action => "index", :id => current_user.location_id , :categoria_pr=>"all"},class:"fa fa-road" %> </a>
+                <li class="font-menu d-flex flex-row" >
+                  <a class="fa fa-road text-center "><%= link_to 'Problematicas', {:controller => "problematics", :action => "index", :id => current_user.location_id , :categoria_pr=>"all"},class:"flex-fill" %></a>
                 </li>
-                <li class="d-inline-flex">
-                  <a><%= link_to 'Noticias', {:controller => "reports", :action => "index",:id => current_user.location_id , :categoria_re=>"all"},class:"fa fa-pagelines" %> </a>
-                </li>
-                <li class="d-inline-flex">
-                  <a><%= link_to 'Consultas', {:controller => "polls", :action => "index"},class:"fa fa-exclamation-triangle" %> </a>
+                <li class=" flex-row d-flex">
+                  <a class="fa fa-newspaper-o text-center "><%= link_to 'Noticias', {:controller => "reports", :action => "index",:id => current_user.location_id , :categoria_re=>"all"},class:"flex-fill" %></a>
 
                 </li>
-                <li class="d-inline-flex">
-                  <a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i><span> Seguimiento de proyectos</span> </a>
+                <li class=" flex-row d-flex">
+                  <a class="fa fa-clipboard text-center "><%= link_to 'Encuestas', {:controller => "polls", :action => "index"},class:"flex-fill" %></a>
+
                 </li>
+
+
+                <li class=" flex-row d-flex">
+                  <a class="  fa fa-calendar-check-o text-center "><%= link_to 'Seguimiento de proyectos', {:controller => "polls", :action => "index"},class:"flex-fill" %></a>
+
+                </li>
+
               </ul>
             </li>
 
       <% end %>
 
        			<li>
-       				<a href="#">Contactanos</a>
+       				<a href="#contact">Contáctanos</a>
        			</li>
        		</ul>
 
@@ -101,7 +107,7 @@
                     </li>
                     <li class="nav-item border-left border-dark pl-3 pr-3 pt-2">
                       <i class="fa fa-sign-out m-auto" aria-hidden="true"></i>
-                    <span style="font-size: 50%; " class="menu-nav "> <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></span>
+                    <span style="font-size: 70%; " class="menu-nav "> <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></span>
                     </li>
 
                  <% else %>
