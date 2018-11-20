@@ -14,20 +14,19 @@
 
     <div class="field align-baseline">
       <%= form.label :nombre_de_noticia , class:"font-weight-bold border rounded p-1 border-dark m-2"%>
-      <p class="">Asigna un nombre que identifique la nueva problematica</p>
+      <p class="">Asigna un nombre que identifique la nueva noticia</p>
       <%= form.text_field :nombre_re ,autofocus: true, class:"form-control w-50"%>
     </div>
 
     <div class="field">
       <%= form.label :descripcion_de_noticia, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
-      <p>Entre mas detalles de la problematica que propones tendra una mejor acogida,
-        No escatimes en detalles, especifica ubicacion, a quien afecta y hasta una posible solucion. </p>
+
       <%= form.text_area :descripcion_re,autofocus: true, class:"form-control",rows:"10" %>
     </div>
 
     <div class="field ">
       <%= form.label :carga_imagen , class:"font-weight-bold text-light border rounded p-1 border-light mb-2 mt-4"%>
-      <p>Carga una imagen para dar mayor detalle de la problematica propuesta</p>
+      <p>Carga una imagen para dar mayor detalle a la nueva noticia</p>
       <%= form.file_field :image, class:"form-control align-middle " %>
 
     </div>

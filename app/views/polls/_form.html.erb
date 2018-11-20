@@ -15,42 +15,41 @@
 
     <div class="field align-baseline">
       <%= form.label :nombre_de_La_Consulta , class:"font-weight-bold border rounded p-1 border-dark m-2"%>
-      <p class="">Asigna un nombre que identifique la nueva problematica</p>
+      <p class="">Asigna un nombre que identifique la nueva encuesta</p>
       <%= form.text_field :nombre_po ,autofocus: true, class:"form-control w-50"%>
     </div>
 
     <div class="field">
       <%= form.label :pregunta, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
-      <p>Entre mas detalles de la problematica que propones tendra una mejor acogida,
-        No escatimes en detalles, especifica ubicacion, a quien afecta y hasta una posible solucion. </p>
+      <p> </p>
       <%= form.text_area :pregunta,autofocus: true, class:"form-control",rows:"5" %>
     </div>
 
     <div class="field">
       <%= form.label :Primera_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
 
-      <%= form.text_area :Opcion1,autofocus: true, class:"form-control",rows:"2" %>
+      <%= form.text_area :opcion1,autofocus: true, class:"form-control",rows:"2" %>
     </div>
     <div class="field">
       <%= form.label :Segunda_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
 
-      <%= form.text_area :Opcion2,autofocus: true, class:"form-control",rows:"2" %>
+      <%= form.text_area :opcion2,autofocus: true, class:"form-control",rows:"2" %>
     </div>
     <div class="field">
       <%= form.label :Tercera_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
 
-      <%= form.text_area :Opcion3,autofocus: true, class:"form-control",rows:"2" %>
+      <%= form.text_area :opcion3,autofocus: true, class:"form-control",rows:"2" %>
     </div>
     <div class="field">
       <%= form.label :Cuarta_opcion, class:"font-weight-bold border rounded p-1 border-dark mb-2 mt-4" %>
 
-      <%= form.text_area :Opcion4,autofocus: true, class:"form-control",rows:"2" %>
+      <%= form.text_area :opcion4,autofocus: true, class:"form-control",rows:"2" %>
     </div>
 
 
     <div class="field ">
       <%= form.label :categoria,class:"font-weight-bold text-light border rounded p-1 border-light mb-2 mt-4" %><br />
-      <p>Seleccion la categoria a la cual pertenece tu problematica</p>
+      <p>Seleccion la categoria a la cual pertenece tu encuesta</p>
       <%= form.select(:categoria_po, options_for_select([['Movilidad','Movilidad'], ['Contaminacion', 'Contaminacion'], ['Seguridad', 'Seguridad'],['Cultura y Recreacion', 'Cultura y Recreacion'],], 1), class:"form-control ") %>
 
     </div>

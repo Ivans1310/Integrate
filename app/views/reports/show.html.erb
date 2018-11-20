@@ -40,14 +40,7 @@
 <div class="m-5">
   <%= link_to 'Back', {:controller => "problematics", :action => "index", :categoria_pr => "all"}, class:"btn btn-outline-dark" %> |
   <% if current_user.roll == 'Representante'%>
-    <%= link_to 'Edit', edit_problematic_path(@problematic),class:"btn btn-outline-info" %>
-    <%= link_to 'Destroy', @problematic, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-outline-danger"%>
+    <%= link_to 'Edit', edit_report_path(@report),class:"btn btn-outline-info" %>
+    <%= link_to 'destroy', reports_path , method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-outline-danger"%>
   <%end%>
 </div>
-
-
-
-
-
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
